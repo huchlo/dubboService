@@ -1,0 +1,4 @@
+#Dubbo Registry Cache
+#Fri Nov 17 18:30:09 CST 2017
+com.service.IRedisService\:hcl1.0=empty\://192.168.200.1\:21890/com.service.IRedisService?anyhost\=true&application\=test&category\=configurators&check\=false&dubbo\=dubboService&generic\=false&interface\=com.service.IRedisService&methods\=dubug,error,info&optimizer\=com.service.api.SerializationOptimizerImpl&payload\=80886080&pid\=17840&retries\=0&revision\=dubboService&serialization\=kryo&side\=provider&timeout\=60000&timestamp\=1510914609313&version\=hcl1.0
+com.service.ITestService\:hcl1.0=empty\://192.168.200.1\:21890/com.service.ITestService?anyhost\=true&application\=test&category\=configurators&check\=false&dubbo\=dubboService&generic\=false&interface\=com.service.ITestService&methods\=sayHello&optimizer\=com.service.api.SerializationOptimizerImpl&payload\=80886080&pid\=17840&retries\=0&revision\=dubboService&serialization\=kryo&side\=provider&timeout\=60000&timestamp\=1510914598626&version\=hcl1.0
