@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.write.base.WmsCategoryBaseWriteMapper">
+
+
+    <insert id="insertWmsCategory" >
+        INSERT INTO wms_category
+        (
+        <trim suffixOverrides=",">
+                    <if test="category_id!=null">
+                        `category_id`,
+                    </if>
+                    <if test="category_name!=null">
+                        `category_name`,
+                    </if>
+                    <if test="category_category_id!=null">
+                        `category_category_id`,
+                    </if>
+                    <if test="category_code!=null">
+                        `category_code`,
+                    </if>
+                    <if test="category_brand_id!=null">
+                        `category_brand_id`,
+                    </if>
+                    <if test="category_isTop!=null">
+                        `category_isTop`,
+                    </if>
+                    <if test="category_status!=null">
+                        `category_status`,
+                    </if>
+                    <if test="category_reservedField1!=null">
+                        `category_reservedField1`,
+                    </if>
+                    <if test="category_reservedField2!=null">
+                        `category_reservedField2`,
+                    </if>
+                    <if test="category_reservedField3!=null">
+                        `category_reservedField3`,
+                    </if>
+                    <if test="category_reservedField4!=null">
+                        `category_reservedField4`,
+                    </if>
+                    <if test="category_reservedField5!=null">
+                        `category_reservedField5`,
+                    </if>
+                    <if test="category_reservedField6!=null">
+                        `category_reservedField6`,
+                    </if>
+                    <if test="category_reservedField7!=null">
+                        `category_reservedField7`,
+                    </if>
+                    <if test="category_reservedField8!=null">
+                        `category_reservedField8`,
+                    </if>
+                    <if test="category_reservedField9!=null">
+                        `category_reservedField9`,
+                    </if>
+        </trim>
+        )
+        VALUES
+        (
+        <trim suffixOverrides=",">
+                <if test="category_id!=null">
+                    #{category_id},
+                </if>
+                <if test="category_name!=null">
+                    #{category_name},
+                </if>
+                <if test="category_category_id!=null">
+                    #{category_category_id},
+                </if>
+                <if test="category_code!=null">
+                    #{category_code},
+                </if>
+                <if test="category_brand_id!=null">
+                    #{category_brand_id},
+                </if>
+                <if test="category_isTop!=null">
+                    #{category_isTop},
+                </if>
+                <if test="category_status!=null">
+                    #{category_status},
+                </if>
+                <if test="category_reservedField1!=null">
+                    #{category_reservedField1},
+                </if>
+                <if test="category_reservedField2!=null">
+                    #{category_reservedField2},
+                </if>
+                <if test="category_reservedField3!=null">
+                    #{category_reservedField3},
+                </if>
+                <if test="category_reservedField4!=null">
+                    #{category_reservedField4},
+                </if>
+                <if test="category_reservedField5!=null">
+                    #{category_reservedField5},
+                </if>
+                <if test="category_reservedField6!=null">
+                    #{category_reservedField6},
+                </if>
+                <if test="category_reservedField7!=null">
+                    #{category_reservedField7},
+                </if>
+                <if test="category_reservedField8!=null">
+                    #{category_reservedField8},
+                </if>
+                <if test="category_reservedField9!=null">
+                    #{category_reservedField9},
+                </if>
+        </trim>
+        );
+    </insert>
+
+
+    <update id="updateWmsCategory">
+        UPDATE wms_category
+        SET
+        <trim suffixOverrides=",">
+            <if test="category_id != null and category_id!=''">
+                `category_id` = #{category_id},
+            </if>
+            <if test="category_name != null and category_name!=''">
+                `category_name` = #{category_name},
+            </if>
+            <if test="category_category_id != null and category_category_id!=''">
+                `category_category_id` = #{category_category_id},
+            </if>
+            <if test="category_code != null and category_code!=''">
+                `category_code` = #{category_code},
+            </if>
+            <if test="category_brand_id != null and category_brand_id!=''">
+                `category_brand_id` = #{category_brand_id},
+            </if>
+            <if test="category_isTop != null">
+                `category_isTop` = #{category_isTop},
+            </if>
+            <if test="category_status != null and category_status!=''">
+                `category_status` = #{category_status},
+            </if>
+            <if test="category_reservedField1 != null and category_reservedField1!=''">
+                `category_reservedField1` = #{category_reservedField1},
+            </if>
+            <if test="category_reservedField2 != null and category_reservedField2!=''">
+                `category_reservedField2` = #{category_reservedField2},
+            </if>
+            <if test="category_reservedField3 != null and category_reservedField3!=''">
+                `category_reservedField3` = #{category_reservedField3},
+            </if>
+            <if test="category_reservedField4 != null and category_reservedField4!=''">
+                `category_reservedField4` = #{category_reservedField4},
+            </if>
+            <if test="category_reservedField5 != null and category_reservedField5!=''">
+                `category_reservedField5` = #{category_reservedField5},
+            </if>
+            <if test="category_reservedField6 != null and category_reservedField6!=''">
+                `category_reservedField6` = #{category_reservedField6},
+            </if>
+            <if test="category_reservedField7 != null and category_reservedField7!=''">
+                `category_reservedField7` = #{category_reservedField7},
+            </if>
+            <if test="category_reservedField8 != null and category_reservedField8!=''">
+                `category_reservedField8` = #{category_reservedField8},
+            </if>
+            <if test="category_reservedField9 != null and category_reservedField9!=''">
+                `category_reservedField9` = #{category_reservedField9},
+            </if>
+        </trim>
+        WHERE
+        <trim suffixOverrides="and">
+        </trim>
+    </update>
+
+</mapper>

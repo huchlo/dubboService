@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+	http://code.alibabatech.com/schema/dubbo 
+	http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+	<!-- 用dubbo协议在暴露服务 -->
+	<dubbo:protocol name="dubbo" port="${rpc.provider.port}"
+		host="${rpc.provider.ip}" serialization="kryo" payload="80886080"
+		optimizer="com.service.api.SerializationOptimizerImpl" />
+
+	<!-- 声明需要暴露的服务接口 -->
+	<dubbo:service interface="com.service.ITestService"
+		ref="testService" version="1.0" protocol="dubbo" timeout="60000" retries="0"/>
+	<bean id="testService"
+		class="com.service.TestServiceImpl" />
+
+	<!--<dubbo:service interface="com.service.IRedisService"
+				   ref="redisService" version="hcl1.0" protocol="dubbo" timeout="60000" retries="0"/>
+	<bean id="redisService"
+		  class="com.service.RedisServiceImpl" />-->
+</beans>

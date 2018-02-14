@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.read.base.WmsBrandBaseReadMapper">
+
+
+
+    <select id="queryWmsBrand" resultType="com.model.WmsBrand">
+        select
+        <include refid="baseResult"></include>
+        from  wms_brand
+        <trim prefix="where" suffixOverrides="and | or">
+            <if test="brand_id != null and brand_id!=''">
+                `brand_id` = #{brand_id} and
+            </if>
+            <if test="brand_category_id != null and brand_category_id!=''">
+                `brand_category_id` = #{brand_category_id} and
+            </if>
+            <if test="brand_name != null and brand_name!=''">
+                `brand_name` = #{brand_name} and
+            </if>
+            <if test="brand_companyName != null and brand_companyName!=''">
+                `brand_companyName` = #{brand_companyName} and
+            </if>
+            <if test="brand_country != null and brand_country!=''">
+                `brand_country` = #{brand_country} and
+            </if>
+            <if test="brand_logo != null and brand_logo!=''">
+                `brand_logo` = #{brand_logo} and
+            </if>
+            <if test="brand_website != null and brand_website!=''">
+                `brand_website` = #{brand_website} and
+            </if>
+            <if test="brand_describe != null and brand_describe!=''">
+                `brand_describe` = #{brand_describe} and
+            </if>
+            <if test="brand_status != null and brand_status!=''">
+                `brand_status` = #{brand_status} and
+            </if>
+            <if test = "(_parameter instanceof com.model.WmsBrand$QueryBuilder) == true">
+                <if test="brand_idList != null">
+                    `brand_id` in
+                    <foreach collection="brand_idList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyBrand_id!=null and fuzzyBrand_id.size()>0">
+                    (
+                    <foreach collection="fuzzyBrand_id"  separator="or" item="item">
+                        `Brand_id` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyBrand_id!=null and rightFuzzyBrand_id.size()>0">
+                    (
+                    <foreach collection="rightFuzzyBrand_id"  separator="or" item="item">
+                        `Brand_id` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="brand_category_idList != null">
+                    `brand_category_id` in
+                    <foreach collection="brand_category_idList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyBrand_category_id!=null and fuzzyBrand_category_id.size()>0">
+                    (
+                    <foreach collection="fuzzyBrand_category_id"  separator="or" item="item">
+                        `Brand_category_id` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyBrand_category_id!=null and rightFuzzyBrand_category_id.size()>0">
+                    (
+                    <foreach collection="rightFuzzyBrand_category_id"  separator="or" item="item">
+                        `Brand_category_id` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="brand_nameList != null">
+                    `brand_name` in
+                    <foreach collection="brand_nameList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyBrand_name!=null and fuzzyBrand_name.size()>0">
+                    (
+                    <foreach collection="fuzzyBrand_name"  separator="or" item="item">
+                        `Brand_name` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyBrand_name!=null and rightFuzzyBrand_name.size()>0">
+                    (
+                    <foreach collection="rightFuzzyBrand_name"  separator="or" item="item">
+                        `Brand_name` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="brand_companyNameList != null">
+                    `brand_companyName` in
+                    <foreach collection="brand_companyNameList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyBrand_companyName!=null and fuzzyBrand_companyName.size()>0">
+                    (
+                    <foreach collection="fuzzyBrand_companyName"  separator="or" item="item">
+                        `Brand_companyName` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyBrand_companyName!=null and rightFuzzyBrand_companyName.size()>0">
+                    (
+                    <foreach collection="rightFuzzyBrand_companyName"  separator="or" item="item">
+                        `Brand_companyName` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="brand_countryList != null">
+                    `brand_country` in
+                    <foreach collection="brand_countryList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyBrand_country!=null and fuzzyBrand_country.size()>0">
+                    (
+                    <foreach collection="fuzzyBrand_country"  separator="or" item="item">
+                        `Brand_country` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyBrand_country!=null and rightFuzzyBrand_country.size()>0">
+                    (
+                    <foreach collection="rightFuzzyBrand_country"  separator="or" item="item">
+                        `Brand_country` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="brand_logoList != null">
+                    `brand_logo` in
+                    <foreach collection="brand_logoList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyBrand_logo!=null and fuzzyBrand_logo.size()>0">
+                    (
+                    <foreach collection="fuzzyBrand_logo"  separator="or" item="item">
+                        `Brand_logo` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyBrand_logo!=null and rightFuzzyBrand_logo.size()>0">
+                    (
+                    <foreach collection="rightFuzzyBrand_logo"  separator="or" item="item">
+                        `Brand_logo` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="brand_websiteList != null">
+                    `brand_website` in
+                    <foreach collection="brand_websiteList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyBrand_website!=null and fuzzyBrand_website.size()>0">
+                    (
+                    <foreach collection="fuzzyBrand_website"  separator="or" item="item">
+                        `Brand_website` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyBrand_website!=null and rightFuzzyBrand_website.size()>0">
+                    (
+                    <foreach collection="rightFuzzyBrand_website"  separator="or" item="item">
+                        `Brand_website` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="brand_describeList != null">
+                    `brand_describe` in
+                    <foreach collection="brand_describeList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyBrand_describe!=null and fuzzyBrand_describe.size()>0">
+                    (
+                    <foreach collection="fuzzyBrand_describe"  separator="or" item="item">
+                        `Brand_describe` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyBrand_describe!=null and rightFuzzyBrand_describe.size()>0">
+                    (
+                    <foreach collection="rightFuzzyBrand_describe"  separator="or" item="item">
+                        `Brand_describe` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="brand_statusList != null">
+                    `brand_status` in
+                    <foreach collection="brand_statusList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyBrand_status!=null and fuzzyBrand_status.size()>0">
+                    (
+                    <foreach collection="fuzzyBrand_status"  separator="or" item="item">
+                        `Brand_status` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyBrand_status!=null and rightFuzzyBrand_status.size()>0">
+                    (
+                    <foreach collection="rightFuzzyBrand_status"  separator="or" item="item">
+                        `Brand_status` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+            </if>
+        </trim>
+    </select>
+
+    <select id="queryWmsBrandLimit1" resultType="com.model.WmsBrand">
+        select
+        <include refid="baseResult"></include>
+        from  wms_brand
+        <trim prefix="where" suffixOverrides="and | or">
+            <if test="brand_id != null and brand_id!=''">
+                `brand_id` = #{brand_id} and
+            </if>
+            <if test="brand_category_id != null and brand_category_id!=''">
+                `brand_category_id` = #{brand_category_id} and
+            </if>
+            <if test="brand_name != null and brand_name!=''">
+                `brand_name` = #{brand_name} and
+            </if>
+            <if test="brand_companyName != null and brand_companyName!=''">
+                `brand_companyName` = #{brand_companyName} and
+            </if>
+            <if test="brand_country != null and brand_country!=''">
+                `brand_country` = #{brand_country} and
+            </if>
+            <if test="brand_logo != null and brand_logo!=''">
+                `brand_logo` = #{brand_logo} and
+            </if>
+            <if test="brand_website != null and brand_website!=''">
+                `brand_website` = #{brand_website} and
+            </if>
+            <if test="brand_describe != null and brand_describe!=''">
+                `brand_describe` = #{brand_describe} and
+            </if>
+            <if test="brand_status != null and brand_status!=''">
+                `brand_status` = #{brand_status} and
+            </if>
+            <if test = "(_parameter instanceof com.model.WmsBrand$QueryBuilder) == true">
+                <if test="brand_idList != null">
+                    `brand_id` in
+                    <foreach collection="brand_idList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="brand_category_idList != null">
+                    `brand_category_id` in
+                    <foreach collection="brand_category_idList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="brand_nameList != null">
+                    `brand_name` in
+                    <foreach collection="brand_nameList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="brand_companyNameList != null">
+                    `brand_companyName` in
+                    <foreach collection="brand_companyNameList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="brand_countryList != null">
+                    `brand_country` in
+                    <foreach collection="brand_countryList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="brand_logoList != null">
+                    `brand_logo` in
+                    <foreach collection="brand_logoList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="brand_websiteList != null">
+                    `brand_website` in
+                    <foreach collection="brand_websiteList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="brand_describeList != null">
+                    `brand_describe` in
+                    <foreach collection="brand_describeList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="brand_statusList != null">
+                    `brand_status` in
+                    <foreach collection="brand_statusList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            </if>
+        </trim>
+        limit 1
+    </select>
+
+    <sql id="baseResult">
+        <trim suffixOverrides=",">
+            <if test = "(_parameter instanceof com.model.WmsBrand$QueryBuilder) == true">
+
+                <if test="fetchFields==null">
+                    *,
+                </if>
+                <if test="fetchFields!=null">
+                    <if test="fetchFields.AllFields !=null">
+                        *,
+                    </if>
+                    <if test="fetchFields.AllFields ==null and fetchFields.fetchFields==null and fetchFields.excludeFields==null and fetchFields.otherFields==null">
+                        *,
+                    </if>
+                    <if test="fetchFields.AllFields==null and fetchFields.fetchFields!=null">
+                    <if test="fetchFields.fetchFields.brand_id==true">
+                        `brand_id`,
+                    </if>
+                    <if test="fetchFields.fetchFields.brand_category_id==true">
+                        `brand_category_id`,
+                    </if>
+                    <if test="fetchFields.fetchFields.brand_name==true">
+                        `brand_name`,
+                    </if>
+                    <if test="fetchFields.fetchFields.brand_companyName==true">
+                        `brand_companyName`,
+                    </if>
+                    <if test="fetchFields.fetchFields.brand_country==true">
+                        `brand_country`,
+                    </if>
+                    <if test="fetchFields.fetchFields.brand_logo==true">
+                        `brand_logo`,
+                    </if>
+                    <if test="fetchFields.fetchFields.brand_website==true">
+                        `brand_website`,
+                    </if>
+                    <if test="fetchFields.fetchFields.brand_describe==true">
+                        `brand_describe`,
+                    </if>
+                    <if test="fetchFields.fetchFields.brand_status==true">
+                        `brand_status`,
+                    </if>
+                    </if>
+                    <if test="fetchFields.AllFields==null and fetchFields.excludeFields!=null">
+                    <if test="fetchFields.excludeFields.brand_id==null">
+                        `brand_id`,
+                    </if>
+                    <if test="fetchFields.excludeFields.brand_category_id==null">
+                        `brand_category_id`,
+                    </if>
+                    <if test="fetchFields.excludeFields.brand_name==null">
+                        `brand_name`,
+                    </if>
+                    <if test="fetchFields.excludeFields.brand_companyName==null">
+                        `brand_companyName`,
+                    </if>
+                    <if test="fetchFields.excludeFields.brand_country==null">
+                        `brand_country`,
+                    </if>
+                    <if test="fetchFields.excludeFields.brand_logo==null">
+                        `brand_logo`,
+                    </if>
+                    <if test="fetchFields.excludeFields.brand_website==null">
+                        `brand_website`,
+                    </if>
+                    <if test="fetchFields.excludeFields.brand_describe==null">
+                        `brand_describe`,
+                    </if>
+                    <if test="fetchFields.excludeFields.brand_status==null">
+                        `brand_status`,
+                    </if>
+                    </if>
+                    <if test="fetchFields.otherFields!=null and fetchFields.otherFields.size>0">
+                        <foreach collection="fetchFields.otherFields" index="index" item="item" separator=",">
+                        `#{item}`
+                        </foreach>
+                    </if>
+                </if>
+            </if>
+            <if test="(_parameter instanceof com.model.WmsBrand$QueryBuilder) == false" >
+                *,
+            </if>
+
+        </trim>
+    </sql>
+
+
+</mapper>

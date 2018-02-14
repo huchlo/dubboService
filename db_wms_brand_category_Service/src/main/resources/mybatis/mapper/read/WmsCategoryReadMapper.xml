@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.read.WmsCategoryReadMapper">
+
+    <sql id="Base_Column_List">
+        category_id,category_name,category_code,category_status
+    </sql>
+
+    <select id="queryWmsCategoryNameById" resultType="java.lang.String">
+        SELECT category_name FROM wms_category WHERE category_id = #{0}
+    </select>
+
+    <select id="queryWmsCategoryById" resultType="com.model.WmsCategory">
+        SELECT * FROM wms_category WHERE category_id = #{0}
+    </select>
+
+    <select id="queryTopWmsCategoryList" resultType="com.model.WmsCategory">
+        SELECT <include refid="Base_Column_List" /> FROM wms_category
+        <trim prefix="where" suffixOverrides="and | or">
+            <if test="category_status != null">
+                <foreach collection="category_status" close=")" open="(" separator="or" item="item">
+                    `category_status` =  '${item}'
+                </foreach> AND
+            </if>
+            <!--<if test="brand_status!=null and brand_status !=''">brand_status=#{brand_status} AND</if>-->
+        </trim>
+    </select>
+</mapper>

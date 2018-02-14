@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.read.WmsBrandReadMapper">
+
+    <sql id="Base_Column_List">
+       brand_id,brand_category_id,brand_name,brand_logo,brand_companyName,brand_website,brand_status
+    </sql>
+
+    <select id="queryWmsBrand_list" resultType="com.model.WmsBrand">
+        SELECT <include refid="Base_Column_List" /> FROM wms_brand
+        <trim prefix="where" suffixOverrides="and | or">
+            <if test="brand_name!=null and brand_name !=''">brand_name LIKE '%${brand_name}%' AND </if>
+            <if test="brand_category_id != null">
+                <foreach collection="brand_category_id" close=")" open="(" separator="or" item="item">
+                    `brand_category_id` LIKE  '%${item}%'
+                </foreach> AND
+            </if>
+            <if test="brand_status != null">
+                <foreach collection="brand_status" close=")" open="(" separator="or" item="item">
+                    `brand_status` =  '${item}'
+                </foreach> AND
+            </if>
+            <!--<if test="brand_status!=null and brand_status !=''">brand_status=#{brand_status} AND</if>-->
+        </trim>
+        LIMIT ${startRow},${pageSize}
+    </select>
+
+    <select id="queryWmsBrandCount_list" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM wms_brand
+        <trim prefix="where" suffixOverrides="and | or">
+            <if test="brand_name!=null and brand_name !=''">brand_name LIKE '%${brand_name}%' AND </if>
+            <if test="brand_category_id != null">
+                <foreach collection="brand_category_id" close=")" open="(" separator="or" item="item">
+                    `brand_category_id` LIKE  '%${item}%'
+                </foreach> AND
+            </if>
+            <if test="brand_status!=null and brand_status !=''">brand_status=#{brand_status} AND</if>
+        </trim>
+    </select>
+
+    <select id="queryWmsBrandById" resultType="com.model.WmsBrand">
+        SELECT * FROM wms_brand WHERE brand_id = #{0}
+    </select>
+</mapper>

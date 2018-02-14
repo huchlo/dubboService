@@ -1,0 +1,668 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.read.base.WmsCategoryBaseReadMapper">
+
+
+
+    <select id="queryWmsCategory" resultType="com.model.WmsCategory">
+        select
+        <include refid="baseResult"></include>
+        from  wms_category
+        <trim prefix="where" suffixOverrides="and | or">
+            <if test="category_id != null and category_id!=''">
+                `category_id` = #{category_id} and
+            </if>
+            <if test="category_name != null and category_name!=''">
+                `category_name` = #{category_name} and
+            </if>
+            <if test="category_category_id != null and category_category_id!=''">
+                `category_category_id` = #{category_category_id} and
+            </if>
+            <if test="category_code != null and category_code!=''">
+                `category_code` = #{category_code} and
+            </if>
+            <if test="category_brand_id != null and category_brand_id!=''">
+                `category_brand_id` = #{category_brand_id} and
+            </if>
+            <if test="category_isTop != null">
+                `category_isTop` = #{category_isTop} and
+            </if>
+            <if test="category_status != null and category_status!=''">
+                `category_status` = #{category_status} and
+            </if>
+            <if test="category_reservedField1 != null and category_reservedField1!=''">
+                `category_reservedField1` = #{category_reservedField1} and
+            </if>
+            <if test="category_reservedField2 != null and category_reservedField2!=''">
+                `category_reservedField2` = #{category_reservedField2} and
+            </if>
+            <if test="category_reservedField3 != null and category_reservedField3!=''">
+                `category_reservedField3` = #{category_reservedField3} and
+            </if>
+            <if test="category_reservedField4 != null and category_reservedField4!=''">
+                `category_reservedField4` = #{category_reservedField4} and
+            </if>
+            <if test="category_reservedField5 != null and category_reservedField5!=''">
+                `category_reservedField5` = #{category_reservedField5} and
+            </if>
+            <if test="category_reservedField6 != null and category_reservedField6!=''">
+                `category_reservedField6` = #{category_reservedField6} and
+            </if>
+            <if test="category_reservedField7 != null and category_reservedField7!=''">
+                `category_reservedField7` = #{category_reservedField7} and
+            </if>
+            <if test="category_reservedField8 != null and category_reservedField8!=''">
+                `category_reservedField8` = #{category_reservedField8} and
+            </if>
+            <if test="category_reservedField9 != null and category_reservedField9!=''">
+                `category_reservedField9` = #{category_reservedField9} and
+            </if>
+            <if test = "(_parameter instanceof com.model.WmsCategory$QueryBuilder) == true">
+                <if test="category_idList != null">
+                    `category_id` in
+                    <foreach collection="category_idList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyCategory_id!=null and fuzzyCategory_id.size()>0">
+                    (
+                    <foreach collection="fuzzyCategory_id"  separator="or" item="item">
+                        `Category_id` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyCategory_id!=null and rightFuzzyCategory_id.size()>0">
+                    (
+                    <foreach collection="rightFuzzyCategory_id"  separator="or" item="item">
+                        `Category_id` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="category_nameList != null">
+                    `category_name` in
+                    <foreach collection="category_nameList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyCategory_name!=null and fuzzyCategory_name.size()>0">
+                    (
+                    <foreach collection="fuzzyCategory_name"  separator="or" item="item">
+                        `Category_name` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyCategory_name!=null and rightFuzzyCategory_name.size()>0">
+                    (
+                    <foreach collection="rightFuzzyCategory_name"  separator="or" item="item">
+                        `Category_name` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="category_category_idList != null">
+                    `category_category_id` in
+                    <foreach collection="category_category_idList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyCategory_category_id!=null and fuzzyCategory_category_id.size()>0">
+                    (
+                    <foreach collection="fuzzyCategory_category_id"  separator="or" item="item">
+                        `Category_category_id` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyCategory_category_id!=null and rightFuzzyCategory_category_id.size()>0">
+                    (
+                    <foreach collection="rightFuzzyCategory_category_id"  separator="or" item="item">
+                        `Category_category_id` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="category_codeList != null">
+                    `category_code` in
+                    <foreach collection="category_codeList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyCategory_code!=null and fuzzyCategory_code.size()>0">
+                    (
+                    <foreach collection="fuzzyCategory_code"  separator="or" item="item">
+                        `Category_code` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyCategory_code!=null and rightFuzzyCategory_code.size()>0">
+                    (
+                    <foreach collection="rightFuzzyCategory_code"  separator="or" item="item">
+                        `Category_code` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="category_brand_idList != null">
+                    `category_brand_id` in
+                    <foreach collection="category_brand_idList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyCategory_brand_id!=null and fuzzyCategory_brand_id.size()>0">
+                    (
+                    <foreach collection="fuzzyCategory_brand_id"  separator="or" item="item">
+                        `Category_brand_id` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyCategory_brand_id!=null and rightFuzzyCategory_brand_id.size()>0">
+                    (
+                    <foreach collection="rightFuzzyCategory_brand_id"  separator="or" item="item">
+                        `Category_brand_id` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="category_isTopList != null">
+                    `category_isTop` in
+                    <foreach collection="category_isTopList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="category_isTopSt !=null">
+                    `category_isTop` >= #{category_isTopSt} and
+                </if>
+                <if test="category_isTopEd!=null">
+                    `category_isTop` &lt;= #{category_isTopEd} and
+                </if>
+                <if test="category_statusList != null">
+                    `category_status` in
+                    <foreach collection="category_statusList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyCategory_status!=null and fuzzyCategory_status.size()>0">
+                    (
+                    <foreach collection="fuzzyCategory_status"  separator="or" item="item">
+                        `Category_status` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyCategory_status!=null and rightFuzzyCategory_status.size()>0">
+                    (
+                    <foreach collection="rightFuzzyCategory_status"  separator="or" item="item">
+                        `Category_status` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="category_reservedField1List != null">
+                    `category_reservedField1` in
+                    <foreach collection="category_reservedField1List" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyCategory_reservedField1!=null and fuzzyCategory_reservedField1.size()>0">
+                    (
+                    <foreach collection="fuzzyCategory_reservedField1"  separator="or" item="item">
+                        `Category_reservedField1` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyCategory_reservedField1!=null and rightFuzzyCategory_reservedField1.size()>0">
+                    (
+                    <foreach collection="rightFuzzyCategory_reservedField1"  separator="or" item="item">
+                        `Category_reservedField1` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="category_reservedField2List != null">
+                    `category_reservedField2` in
+                    <foreach collection="category_reservedField2List" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyCategory_reservedField2!=null and fuzzyCategory_reservedField2.size()>0">
+                    (
+                    <foreach collection="fuzzyCategory_reservedField2"  separator="or" item="item">
+                        `Category_reservedField2` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyCategory_reservedField2!=null and rightFuzzyCategory_reservedField2.size()>0">
+                    (
+                    <foreach collection="rightFuzzyCategory_reservedField2"  separator="or" item="item">
+                        `Category_reservedField2` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="category_reservedField3List != null">
+                    `category_reservedField3` in
+                    <foreach collection="category_reservedField3List" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyCategory_reservedField3!=null and fuzzyCategory_reservedField3.size()>0">
+                    (
+                    <foreach collection="fuzzyCategory_reservedField3"  separator="or" item="item">
+                        `Category_reservedField3` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyCategory_reservedField3!=null and rightFuzzyCategory_reservedField3.size()>0">
+                    (
+                    <foreach collection="rightFuzzyCategory_reservedField3"  separator="or" item="item">
+                        `Category_reservedField3` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="category_reservedField4List != null">
+                    `category_reservedField4` in
+                    <foreach collection="category_reservedField4List" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyCategory_reservedField4!=null and fuzzyCategory_reservedField4.size()>0">
+                    (
+                    <foreach collection="fuzzyCategory_reservedField4"  separator="or" item="item">
+                        `Category_reservedField4` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyCategory_reservedField4!=null and rightFuzzyCategory_reservedField4.size()>0">
+                    (
+                    <foreach collection="rightFuzzyCategory_reservedField4"  separator="or" item="item">
+                        `Category_reservedField4` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="category_reservedField5List != null">
+                    `category_reservedField5` in
+                    <foreach collection="category_reservedField5List" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyCategory_reservedField5!=null and fuzzyCategory_reservedField5.size()>0">
+                    (
+                    <foreach collection="fuzzyCategory_reservedField5"  separator="or" item="item">
+                        `Category_reservedField5` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyCategory_reservedField5!=null and rightFuzzyCategory_reservedField5.size()>0">
+                    (
+                    <foreach collection="rightFuzzyCategory_reservedField5"  separator="or" item="item">
+                        `Category_reservedField5` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="category_reservedField6List != null">
+                    `category_reservedField6` in
+                    <foreach collection="category_reservedField6List" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyCategory_reservedField6!=null and fuzzyCategory_reservedField6.size()>0">
+                    (
+                    <foreach collection="fuzzyCategory_reservedField6"  separator="or" item="item">
+                        `Category_reservedField6` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyCategory_reservedField6!=null and rightFuzzyCategory_reservedField6.size()>0">
+                    (
+                    <foreach collection="rightFuzzyCategory_reservedField6"  separator="or" item="item">
+                        `Category_reservedField6` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="category_reservedField7List != null">
+                    `category_reservedField7` in
+                    <foreach collection="category_reservedField7List" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyCategory_reservedField7!=null and fuzzyCategory_reservedField7.size()>0">
+                    (
+                    <foreach collection="fuzzyCategory_reservedField7"  separator="or" item="item">
+                        `Category_reservedField7` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyCategory_reservedField7!=null and rightFuzzyCategory_reservedField7.size()>0">
+                    (
+                    <foreach collection="rightFuzzyCategory_reservedField7"  separator="or" item="item">
+                        `Category_reservedField7` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="category_reservedField8List != null">
+                    `category_reservedField8` in
+                    <foreach collection="category_reservedField8List" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyCategory_reservedField8!=null and fuzzyCategory_reservedField8.size()>0">
+                    (
+                    <foreach collection="fuzzyCategory_reservedField8"  separator="or" item="item">
+                        `Category_reservedField8` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyCategory_reservedField8!=null and rightFuzzyCategory_reservedField8.size()>0">
+                    (
+                    <foreach collection="rightFuzzyCategory_reservedField8"  separator="or" item="item">
+                        `Category_reservedField8` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test="category_reservedField9List != null">
+                    `category_reservedField9` in
+                    <foreach collection="category_reservedField9List" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test ="fuzzyCategory_reservedField9!=null and fuzzyCategory_reservedField9.size()>0">
+                    (
+                    <foreach collection="fuzzyCategory_reservedField9"  separator="or" item="item">
+                        `Category_reservedField9` like concat('%',#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+                <if test ="rightFuzzyCategory_reservedField9!=null and rightFuzzyCategory_reservedField9.size()>0">
+                    (
+                    <foreach collection="rightFuzzyCategory_reservedField9"  separator="or" item="item">
+                        `Category_reservedField9` like concat(#{item},'%')
+                    </foreach>
+                    ) and
+                </if>
+            </if>
+        </trim>
+    </select>
+
+    <select id="queryWmsCategoryLimit1" resultType="com.model.WmsCategory">
+        select
+        <include refid="baseResult"></include>
+        from  wms_category
+        <trim prefix="where" suffixOverrides="and | or">
+            <if test="category_id != null and category_id!=''">
+                `category_id` = #{category_id} and
+            </if>
+            <if test="category_name != null and category_name!=''">
+                `category_name` = #{category_name} and
+            </if>
+            <if test="category_category_id != null and category_category_id!=''">
+                `category_category_id` = #{category_category_id} and
+            </if>
+            <if test="category_code != null and category_code!=''">
+                `category_code` = #{category_code} and
+            </if>
+            <if test="category_brand_id != null and category_brand_id!=''">
+                `category_brand_id` = #{category_brand_id} and
+            </if>
+            <if test="category_isTop != null">
+                `category_isTop` = #{category_isTop} and
+            </if>
+            <if test="category_status != null and category_status!=''">
+                `category_status` = #{category_status} and
+            </if>
+            <if test="category_reservedField1 != null and category_reservedField1!=''">
+                `category_reservedField1` = #{category_reservedField1} and
+            </if>
+            <if test="category_reservedField2 != null and category_reservedField2!=''">
+                `category_reservedField2` = #{category_reservedField2} and
+            </if>
+            <if test="category_reservedField3 != null and category_reservedField3!=''">
+                `category_reservedField3` = #{category_reservedField3} and
+            </if>
+            <if test="category_reservedField4 != null and category_reservedField4!=''">
+                `category_reservedField4` = #{category_reservedField4} and
+            </if>
+            <if test="category_reservedField5 != null and category_reservedField5!=''">
+                `category_reservedField5` = #{category_reservedField5} and
+            </if>
+            <if test="category_reservedField6 != null and category_reservedField6!=''">
+                `category_reservedField6` = #{category_reservedField6} and
+            </if>
+            <if test="category_reservedField7 != null and category_reservedField7!=''">
+                `category_reservedField7` = #{category_reservedField7} and
+            </if>
+            <if test="category_reservedField8 != null and category_reservedField8!=''">
+                `category_reservedField8` = #{category_reservedField8} and
+            </if>
+            <if test="category_reservedField9 != null and category_reservedField9!=''">
+                `category_reservedField9` = #{category_reservedField9} and
+            </if>
+            <if test = "(_parameter instanceof com.model.WmsCategory$QueryBuilder) == true">
+                <if test="category_idList != null">
+                    `category_id` in
+                    <foreach collection="category_idList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="category_nameList != null">
+                    `category_name` in
+                    <foreach collection="category_nameList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="category_category_idList != null">
+                    `category_category_id` in
+                    <foreach collection="category_category_idList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="category_codeList != null">
+                    `category_code` in
+                    <foreach collection="category_codeList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="category_brand_idList != null">
+                    `category_brand_id` in
+                    <foreach collection="category_brand_idList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="category_isTopList != null">
+                    `category_isTop` in
+                    <foreach collection="category_isTopList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="category_isTopSt !=null">
+                    `category_isTop` >= #{category_isTopSt and
+                </if>
+                <if test="category_isTopEd!=null">
+                    `category_isTop` &lt;= #{category_isTopEd} and
+                </if>
+                <if test="category_statusList != null">
+                    `category_status` in
+                    <foreach collection="category_statusList" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="category_reservedField1List != null">
+                    `category_reservedField1` in
+                    <foreach collection="category_reservedField1List" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="category_reservedField2List != null">
+                    `category_reservedField2` in
+                    <foreach collection="category_reservedField2List" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="category_reservedField3List != null">
+                    `category_reservedField3` in
+                    <foreach collection="category_reservedField3List" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="category_reservedField4List != null">
+                    `category_reservedField4` in
+                    <foreach collection="category_reservedField4List" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="category_reservedField5List != null">
+                    `category_reservedField5` in
+                    <foreach collection="category_reservedField5List" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="category_reservedField6List != null">
+                    `category_reservedField6` in
+                    <foreach collection="category_reservedField6List" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="category_reservedField7List != null">
+                    `category_reservedField7` in
+                    <foreach collection="category_reservedField7List" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="category_reservedField8List != null">
+                    `category_reservedField8` in
+                    <foreach collection="category_reservedField8List" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+                <if test="category_reservedField9List != null">
+                    `category_reservedField9` in
+                    <foreach collection="category_reservedField9List" close=")" open="(" separator="," item="item">
+                        #{item}
+                    </foreach> and
+                </if>
+            </if>
+        </trim>
+        limit 1
+    </select>
+
+    <sql id="baseResult">
+        <trim suffixOverrides=",">
+            <if test = "(_parameter instanceof com.model.WmsCategory$QueryBuilder) == true">
+
+                <if test="fetchFields==null">
+                    *,
+                </if>
+                <if test="fetchFields!=null">
+                    <if test="fetchFields.AllFields !=null">
+                        *,
+                    </if>
+                    <if test="fetchFields.AllFields ==null and fetchFields.fetchFields==null and fetchFields.excludeFields==null and fetchFields.otherFields==null">
+                        *,
+                    </if>
+                    <if test="fetchFields.AllFields==null and fetchFields.fetchFields!=null">
+                    <if test="fetchFields.fetchFields.category_id==true">
+                        `category_id`,
+                    </if>
+                    <if test="fetchFields.fetchFields.category_name==true">
+                        `category_name`,
+                    </if>
+                    <if test="fetchFields.fetchFields.category_category_id==true">
+                        `category_category_id`,
+                    </if>
+                    <if test="fetchFields.fetchFields.category_code==true">
+                        `category_code`,
+                    </if>
+                    <if test="fetchFields.fetchFields.category_brand_id==true">
+                        `category_brand_id`,
+                    </if>
+                    <if test="fetchFields.fetchFields.category_isTop==true">
+                        `category_isTop`,
+                    </if>
+                    <if test="fetchFields.fetchFields.category_status==true">
+                        `category_status`,
+                    </if>
+                    <if test="fetchFields.fetchFields.category_reservedField1==true">
+                        `category_reservedField1`,
+                    </if>
+                    <if test="fetchFields.fetchFields.category_reservedField2==true">
+                        `category_reservedField2`,
+                    </if>
+                    <if test="fetchFields.fetchFields.category_reservedField3==true">
+                        `category_reservedField3`,
+                    </if>
+                    <if test="fetchFields.fetchFields.category_reservedField4==true">
+                        `category_reservedField4`,
+                    </if>
+                    <if test="fetchFields.fetchFields.category_reservedField5==true">
+                        `category_reservedField5`,
+                    </if>
+                    <if test="fetchFields.fetchFields.category_reservedField6==true">
+                        `category_reservedField6`,
+                    </if>
+                    <if test="fetchFields.fetchFields.category_reservedField7==true">
+                        `category_reservedField7`,
+                    </if>
+                    <if test="fetchFields.fetchFields.category_reservedField8==true">
+                        `category_reservedField8`,
+                    </if>
+                    <if test="fetchFields.fetchFields.category_reservedField9==true">
+                        `category_reservedField9`,
+                    </if>
+                    </if>
+                    <if test="fetchFields.AllFields==null and fetchFields.excludeFields!=null">
+                    <if test="fetchFields.excludeFields.category_id==null">
+                        `category_id`,
+                    </if>
+                    <if test="fetchFields.excludeFields.category_name==null">
+                        `category_name`,
+                    </if>
+                    <if test="fetchFields.excludeFields.category_category_id==null">
+                        `category_category_id`,
+                    </if>
+                    <if test="fetchFields.excludeFields.category_code==null">
+                        `category_code`,
+                    </if>
+                    <if test="fetchFields.excludeFields.category_brand_id==null">
+                        `category_brand_id`,
+                    </if>
+                    <if test="fetchFields.excludeFields.category_isTop==null">
+                        `category_isTop`,
+                    </if>
+                    <if test="fetchFields.excludeFields.category_status==null">
+                        `category_status`,
+                    </if>
+                    <if test="fetchFields.excludeFields.category_reservedField1==null">
+                        `category_reservedField1`,
+                    </if>
+                    <if test="fetchFields.excludeFields.category_reservedField2==null">
+                        `category_reservedField2`,
+                    </if>
+                    <if test="fetchFields.excludeFields.category_reservedField3==null">
+                        `category_reservedField3`,
+                    </if>
+                    <if test="fetchFields.excludeFields.category_reservedField4==null">
+                        `category_reservedField4`,
+                    </if>
+                    <if test="fetchFields.excludeFields.category_reservedField5==null">
+                        `category_reservedField5`,
+                    </if>
+                    <if test="fetchFields.excludeFields.category_reservedField6==null">
+                        `category_reservedField6`,
+                    </if>
+                    <if test="fetchFields.excludeFields.category_reservedField7==null">
+                        `category_reservedField7`,
+                    </if>
+                    <if test="fetchFields.excludeFields.category_reservedField8==null">
+                        `category_reservedField8`,
+                    </if>
+                    <if test="fetchFields.excludeFields.category_reservedField9==null">
+                        `category_reservedField9`,
+                    </if>
+                    </if>
+                    <if test="fetchFields.otherFields!=null and fetchFields.otherFields.size>0">
+                        <foreach collection="fetchFields.otherFields" index="index" item="item" separator=",">
+                        `#{item}`
+                        </foreach>
+                    </if>
+                </if>
+            </if>
+            <if test="(_parameter instanceof com.model.WmsCategory$QueryBuilder) == false" >
+                *,
+            </if>
+
+        </trim>
+    </sql>
+
+
+</mapper>

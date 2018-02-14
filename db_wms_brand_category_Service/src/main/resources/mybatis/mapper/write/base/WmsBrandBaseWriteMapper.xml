@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.write.base.WmsBrandBaseWriteMapper">
+
+
+    <insert id="insertWmsBrand" >
+        INSERT INTO wms_brand
+        (
+        <trim suffixOverrides=",">
+                    <if test="brand_id!=null">
+                        `brand_id`,
+                    </if>
+                    <if test="brand_category_id!=null">
+                        `brand_category_id`,
+                    </if>
+                    <if test="brand_name!=null">
+                        `brand_name`,
+                    </if>
+                    <if test="brand_companyName!=null">
+                        `brand_companyName`,
+                    </if>
+                    <if test="brand_country!=null">
+                        `brand_country`,
+                    </if>
+                    <if test="brand_logo!=null">
+                        `brand_logo`,
+                    </if>
+                    <if test="brand_website!=null">
+                        `brand_website`,
+                    </if>
+                    <if test="brand_describe!=null">
+                        `brand_describe`,
+                    </if>
+                    <if test="brand_status!=null">
+                        `brand_status`,
+                    </if>
+        </trim>
+        )
+        VALUES
+        (
+        <trim suffixOverrides=",">
+                <if test="brand_id!=null">
+                    #{brand_id},
+                </if>
+                <if test="brand_category_id!=null">
+                    #{brand_category_id},
+                </if>
+                <if test="brand_name!=null">
+                    #{brand_name},
+                </if>
+                <if test="brand_companyName!=null">
+                    #{brand_companyName},
+                </if>
+                <if test="brand_country!=null">
+                    #{brand_country},
+                </if>
+                <if test="brand_logo!=null">
+                    #{brand_logo},
+                </if>
+                <if test="brand_website!=null">
+                    #{brand_website},
+                </if>
+                <if test="brand_describe!=null">
+                    #{brand_describe},
+                </if>
+                <if test="brand_status!=null">
+                    #{brand_status},
+                </if>
+        </trim>
+        );
+    </insert>
+
+
+    <update id="updateWmsBrand">
+        UPDATE wms_brand
+        SET
+        <trim suffixOverrides=",">
+            <if test="brand_category_id != null and brand_category_id!=''">
+                `brand_category_id` = #{brand_category_id},
+            </if>
+            <if test="brand_name != null and brand_name!=''">
+                `brand_name` = #{brand_name},
+            </if>
+            <if test="brand_companyName != null and brand_companyName!=''">
+                `brand_companyName` = #{brand_companyName},
+            </if>
+            <if test="brand_country != null and brand_country!=''">
+                `brand_country` = #{brand_country},
+            </if>
+            <if test="brand_logo != null and brand_logo!=''">
+                `brand_logo` = #{brand_logo},
+            </if>
+            <if test="brand_website != null and brand_website!=''">
+                `brand_website` = #{brand_website},
+            </if>
+            <if test="brand_describe != null and brand_describe!=''">
+                `brand_describe` = #{brand_describe},
+            </if>
+            <if test="brand_status != null and brand_status!=''">
+                `brand_status` = #{brand_status},
+            </if>
+        </trim>
+        WHERE
+        <trim suffixOverrides="and">
+                `brand_id` = #{brand_id} and
+        </trim>
+    </update>
+
+</mapper>

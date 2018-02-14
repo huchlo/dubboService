@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+	http://www.springframework.org/schema/beans/spring-beans-4.0.xsd  
+	http://www.springframework.org/schema/context  
+	http://www.springframework.org/schema/context/spring-context-4.0.xsd  
+	http://www.springframework.org/schema/aop  
+	http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+	http://www.springframework.org/schema/tx  
+	http://www.springframework.org/schema/tx/spring-tx-4.0.xsd  
+	http://www.springframework.org/schema/mvc
+	http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+	http://www.springframework.org/schema/jdbc  
+	http://www.springframework.org/schema/jdbc/spring-jdbc-4.0.xsd">
+	
+	<!-- 基础dao包 -->
+	<!--context:component-scan base-package="com.ivyb2b.**.dao.**" /-->
+	<!-- 服务层包 -->
+	<!--context:component-scan base-package="com.ivyb2b.oms.*.service.impl" />
+	<context:component-scan base-package="com.ivyb2b.oms.*.dao.impl" /-->
+	
+	<!-- 加载文件服务配置文件 -->
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="order" value="2" />
+    	<property name="ignoreUnresolvablePlaceholders" value="true" />
+        <property name="locations">
+	        <list>
+	        	<!--<value>file:E:\WorkMyEclipse10\dubboService\Config\src\main\resources\config\zkConfig\config.properties</value>-->
+				<value>classpath:config/zkConfig/config.properties</value>
+	        	<!--<value>file:E:\WorkMyEclipse10\dubboService\Config\src\main\resources\config\dubboConfig\dubbo.properties</value>-->
+				<value>classpath:config/dubboConfig/basic_dubbo.properties</value>
+	        	<!--value>file:${CONFIG_PATH}mongodbConfig/mongodbConfig.properties</value-->
+	        </list>
+        </property>
+    </bean>
+    <!-- Spring应用上下文持有器 -->
+    <bean class="com.common.util.SpringContextHolder"></bean>
+    
+    <!-- 读取config.properties属性文件中的数据 -->
+    <!--bean id="property" class="com.Property">
+    	<property name="systemCode" value="${systemCode}"></property>
+    	<property name="systemToke" value="${systemToke}"></property>
+    </bean-->
+    
+    <!--import resource="classpath*:spring/oms/spring-transaction.xml"/-->
+    <import resource="classpath:spring/spring-api.xml"/>
+    <!-- <import resource="classpath:spring/spring-redis.xml"/> -->
+    <!--import resource="classpath:spring/mongodb-context.xml"/-->
+</beans>
+
+
